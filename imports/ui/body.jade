@@ -6,7 +6,8 @@ body
     div.row(class="form card-panel blue lighten-5")
       div.search(class="col s12 m8 l4")
         i(class="material-icons") search
-        input(class="search-field" type="text" name="text" placeholder="Enter a title to search for prices")
+        form.search
+          input(class="search-field" type="text" name="text" placeholder="Enter a title to search for prices")
       div(class="filters col s6 m4 l4 offset-s3")
         button(class="best waves-effect waves-green btn-flat") Best
         button(class="sale waves-effect waves-green btn-flat") Sale
