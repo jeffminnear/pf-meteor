@@ -25,6 +25,7 @@ ejson@1.0.9
 es5-shim@4.5.8
 fastclick@1.0.9
 geojson-utils@1.0.6
+grigio:babel@0.1.8
 hot-code-push@1.0.2
 html-tools@1.0.7
 htmljs@1.0.7
