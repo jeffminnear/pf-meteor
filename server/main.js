@@ -3,24 +3,30 @@
 import { Meteor } from 'meteor/meteor';
 
 import scrapers from 'pf-scrapers';
+import _ from 'lodash';
 
 Meteor.startup(() => {
   // code to run on server at startup
 });
 
-/*
-TODO figure out why this method is being called twice
-     once with the correct title, and once with a blank title
-*/
+
 Meteor.methods({
   'getResults': function getResults(args) {
+    if (!args.title) {
+      return;
+    }
+
     console.log("##################################################\n" + args.title + "\n##################################################");
 
     var promises = scrapers;
 
     Promise.all(promises.map((x) => x(args)))
       .then((results) => {
-        console.log(results);
+        results = _.flatten(results);
+        for (var i = 0; i < results.length; i++) {
+          var result = results[i];
+          console.log(result.simplifiedTitle + " is " + result.price + " at " + result.store + "!");
+        }
       });
   }
 });
