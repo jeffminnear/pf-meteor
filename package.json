@@ -7,6 +7,6 @@
   "dependencies": {
     "lodash": "^4.8.2",
     "meteor-node-stubs": "~0.2.0",
-    "pf-scrapers": "^0.2.3"
+    "pf-scrapers": "^0.2.4"
   }
 }
