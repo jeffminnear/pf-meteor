@@ -1,10 +1,10 @@
-template(name="result")
+template(name="resultEntry")
   div.row(class="result")
     p.result-title(class="col s8 m3 l3 offset-s2")
-      | Game Title
+      | #{ entry.simplifiedTitle }
     p.result-price(class="col s8 m3 l3 offset-s2")
-      | Price
+      | #{ entry.price }
     p.result-store(class="col s8 m3 l3 offset-s2")
-      | at Store
-    img.result-thumbnail(class="col s8 m3 l3 offset-s2" src="http://cdn.akamai.steamstatic.com/steam/apps/374320/capsule_sm_120.jpg?t=1459425642")
+      | #{ entry.store }
+    img.result-thumbnail(class="col s8 m3 l3 offset-s2" src="#{ entry.imageURL }")
   div.divider
