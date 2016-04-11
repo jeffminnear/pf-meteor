@@ -5,6 +5,7 @@ import { Session } from 'meteor/session';
 
 import scrapers from 'pf-scrapers';
 import _ from 'lodash';
+import Levenshtein from 'levenshtein';
 
 Meteor.startup(() => {
   // code to run on server at startup
@@ -27,7 +28,8 @@ Meteor.methods({
           results = _.flatten(results);
           for (var i = 0; i < results.length; i++) {
             var result = results[i];
-            console.log(result.simplifiedTitle + " is " + result.price + " at " + result.store + "!");
+            var resultLev = new Levenshtein (args.title.toLowerCase(), result.simplifiedTitle);
+            result.levDistance = resultLev.distance;
           }
 
           resolve(results);

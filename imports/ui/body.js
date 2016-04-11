@@ -6,6 +6,7 @@ import { Session } from 'meteor/session';
 
 
 import scrapers from 'pf-scrapers';
+import _ from 'lodash';
 
 import './body.jade';
 import './result.jade';
@@ -21,7 +22,8 @@ import './result.jade';
 
 Template.body.helpers({
   scrapeResults() {
-    return Session.get('scrapeResults');
+    var results = Session.get('scrapeResults');
+    return _.orderBy(results, ['levDistance', 'simplifiedTitle', 'price'], ['asc', 'desc', 'asc']);
   }
 });
 
