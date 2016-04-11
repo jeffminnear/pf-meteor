@@ -9,8 +9,18 @@ body
         form.search
           input(class="search-field" type="text" name="text" placeholder="Enter a title to search for prices")
       div(class="filters col s6 m4 l4 offset-s3")
-        button(class="best waves-effect waves-green btn-flat") Best
-        button(class="sale waves-effect waves-green btn-flat") Sale
+        div.switch
+          label
+            | off
+            input(type="checkbox")
+            span.lever
+            | Best
+        div.switch
+          label
+            | off
+            input(type="checkbox")
+            span.lever
+            | Sale
         
     div.row(class="search-results grey lighten-4")
       +each(result in scrapeResults)
