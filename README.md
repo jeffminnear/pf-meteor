@@ -6,4 +6,5 @@ A web and mobile implementation of pilot-fish, pf-meteor checks prices of PC gam
 
 ## License
 Copyright (c) 2016 Jeff Minnear
+
 Licensed under the MIT license.
