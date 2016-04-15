@@ -11,20 +11,15 @@ import _ from 'lodash';
 import './body.jade';
 import './result.jade';
 
-// Template.body.onRendered(function() {
-//   const self = this;
-//
-//   Tracker.autorun(() => {
-//     console.log('tracker autorun');
-//     self.scrapeResults = Session.get('scrapeResults');
-//   });
-// });
+const ResultList = new Meteor.Collection(null);
 
 Template.body.helpers({
-  scrapeResults() {
-    var results = Session.get('scrapeResults');
-    return _.orderBy(results, ['levDistance', 'simplifiedTitle', 'price'], ['asc', 'desc', 'asc']);
-  }
+  results() {
+    console.log(ResultList.find().fetch());
+    return ResultList.find({}, {
+      sort: [["levDistance", "asc"], ["simplifiedTitle", "asc"], ["price", "asc"]]
+    });
+  },
 });
 
 Template.body.events({
@@ -45,7 +40,10 @@ Template.body.events({
 
       Promise.all(result)
         .then((results) => {
-          Session.set('scrapeResults', results);
+          ResultList.remove({});
+          for (var i = 0; i < results.length; i++) {
+            ResultList.insert(results[i]);
+          }
         });
     });
 

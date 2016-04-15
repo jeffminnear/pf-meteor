@@ -1,17 +1,17 @@
-template(name="resultEntry")
-  div.row(class="result {{#if entry.normalPrice}}sale{{/if}}")
+template(name="result")
+  div.row(class="result {{#if normalPrice}}sale{{/if}}")
     p.result-title(class="col s8 m3 l3 offset-s2")
-      | #{ entry.simplifiedTitle }
-    if (entry.normalPrice)
+      | #{ simplifiedTitle }
+    if (normalPrice)
       div.prices(class="col s8 m3 l3 offset-s2")
         p.result-normal-price
-          | #{ entry.normalPrice }
+          | #{ normalPrice }
         p.result-sale-price
-          | #{ entry.price }
+          | #{ price }
     else
       p.result-price(class="col s8 m3 l3 offset-s2")
-        | #{ entry.price }
+        | #{ price }
     p.result-store(class="col s8 m3 l3 offset-s2")
-      | #{ entry.store }
-    img.result-thumbnail(class="col s8 m3 l3 offset-s2" src="#{ entry.imageURL }")
+      | #{ store }
+    img.result-thumbnail(class="col s8 m3 l3 offset-s2" src="#{ imageURL }")
   div.divider

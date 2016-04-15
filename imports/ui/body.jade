@@ -23,6 +23,6 @@ body
             | Sale
         
     div.row(class="search-results grey lighten-4")
-      +each(result in scrapeResults)
-        +resultEntry(entry=result)
+      +each(results)
+        +result
     
