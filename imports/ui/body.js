@@ -14,13 +14,22 @@ import './result.jade';
 
 const ResultList = new Meteor.Collection(null);
 
+
 Template.body.onCreated(function bodyOnCreated() {
   this.state = new ReactiveDict();
 });
 
 Template.body.helpers({
   results() {
-    console.log(ResultList.find().fetch());
+    const instance = Template.instance();
+    if (instance.state.get('onSaleOnly')) {
+      if (ResultList.find({ normalPrice: { $ne: null } }).count() == 0) {
+        alert("No items in the search results are on sale");
+      }
+      return ResultList.find({ normalPrice: { $ne: null } }, {
+        sort: [["levDistance", "asc"], ["simplifiedTitle", "asc"], ["price", "asc"]]
+      });
+    }
     return ResultList.find({}, {
       sort: [["levDistance", "asc"], ["simplifiedTitle", "asc"], ["price", "asc"]]
     });
@@ -53,5 +62,8 @@ Template.body.events({
     });
 
     target.text.value = "";
+  },
+  'change .sale-switch input'(event, instance) {
+    instance.state.set('onSaleOnly', event.target.checked);
   },
 });
