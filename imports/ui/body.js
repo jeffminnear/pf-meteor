@@ -3,6 +3,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { Session } from 'meteor/session';
+import { ReactiveDict } from 'meteor/reactive-dict';
 
 
 import scrapers from 'pf-scrapers';
@@ -12,6 +13,10 @@ import './body.jade';
 import './result.jade';
 
 const ResultList = new Meteor.Collection(null);
+
+Template.body.onCreated(function bodyOnCreated() {
+  this.state = new ReactiveDict();
+});
 
 Template.body.helpers({
   results() {

@@ -26,3 +26,4 @@ materialize:materialize
 
 npm-container
 session
+reactive-dict
