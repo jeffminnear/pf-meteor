@@ -1,21 +1,22 @@
 template(name="result")
   div.row(class="result {{#if normalPrice}}sale{{/if}}")
-    div.game-link-container
-      a.game-link(target="_blank" href="#{ linkURL }")
+    div.row(class="game-link-container")
+      a.game-link(href="#" onclick="window.open('#{ linkURL }', '_system')" class="col s4 m4 l2 push-s8 push-m8 offset-l10")
+        span Check it out!
         i(class="icon ion-ios-navigate")
-          span Check it out!
-    p.result-title(class="col s8 m3 l3 offset-s2")
-      | #{ simplifiedTitle }
-    if (normalPrice)
-      div.prices(class="col s8 m3 l3 offset-s2")
-        p.result-normal-price
-          | #{ normalPrice }
-        p.result-sale-price
+    div.row
+      p.result-title(class="col s8 m3 l3 offset-s2")
+        | #{ simplifiedTitle }
+      if (normalPrice)
+        div.prices(class="col s8 m3 l3 offset-s2")
+          p.result-normal-price
+            | #{ normalPrice }
+          p.result-sale-price
+            | #{ price }
+      else
+        p.result-price(class="col s8 m3 l3 offset-s2")
           | #{ price }
-    else
-      p.result-price(class="col s8 m3 l3 offset-s2")
-        | #{ price }
-    p.result-store(class="col s8 m3 l3 offset-s2")
-      | #{ store }
-    img.result-thumbnail(class="col s8 m3 l3 offset-s2" src="#{ imageURL }")
+      p.result-store(class="col s8 m3 l3 offset-s2")
+        | #{ store }
+      img.result-thumbnail(class="col s8 m3 l3 offset-s2" src="#{ imageURL }")
   div.divider
