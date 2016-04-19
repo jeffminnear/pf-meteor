@@ -1,4 +1,6 @@
+import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
+import { check } from 'meteor/check';
 
 export const Titles = new Mongo.Collection('titles');
 
@@ -8,12 +10,17 @@ Meteor.methods({
 
     Titles.insert({ text });
   },
-  'titles.getArray'() {
-    let objArray = Titles.find({});
-    let strArray = [];
-    for (var obj in objArray) {
-      strArray.push(obj.text);
+  'titles.getArray'(term) {
+    var query = {
+      text: { $regex: term, $options: 'i' }
+    };
+
+    var results = Titles.find(query, { limit: 15 }).fetch();
+    var array = [];
+    for (var i = 0; i < results.length; i++) {
+      array.push(results[i].text);
     }
-    return strArray;
+
+    return array;
   },
 });
