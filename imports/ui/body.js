@@ -5,6 +5,8 @@ import { Template } from 'meteor/templating';
 import { Session } from 'meteor/session';
 import { ReactiveDict } from 'meteor/reactive-dict';
 
+import { Titles } from '../api/titles.js';
+
 
 import scrapers from 'pf-scrapers';
 import _ from 'lodash';
@@ -14,6 +16,20 @@ import './result.jade';
 
 const ResultList = new Meteor.Collection(null);
 
+
+$(document).ready(function () {
+  $('#search-field').autocomplete({
+    source: function (request, callback) {
+      Meteor.call('titles.getArray', request.term, function (err, results) {
+        callback(results);
+      });
+    },
+    select: function (event, ui) {
+      $('#search-field').val(ui.item.value);
+      $('#search-form').submit();
+    }
+  });
+});
 
 Template.body.onCreated(function bodyOnCreated() {
   this.state = new ReactiveDict();
@@ -37,7 +53,7 @@ Template.body.helpers({
 });
 
 Template.body.events({
-  'submit .search'(event) {
+  'submit #search-form'(event) {
     event.preventDefault();
 
     const target = event.target;
@@ -57,6 +73,7 @@ Template.body.events({
           ResultList.remove({});
           for (var i = 0; i < results.length; i++) {
             ResultList.insert(results[i]);
+            Meteor.call('titles.insert', results[i].simplifiedTitle);
           }
         });
     });

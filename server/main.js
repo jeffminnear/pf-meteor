@@ -7,6 +7,9 @@ import scrapers from 'pf-scrapers';
 import _ from 'lodash';
 import Levenshtein from 'levenshtein';
 
+import '../imports/api/titles.js';
+
+
 Meteor.startup(() => {
   // code to run on server at startup
 });
@@ -28,6 +31,8 @@ Meteor.methods({
           results = _.flatten(results);
           for (var i = 0; i < results.length; i++) {
             var result = results[i];
+
+            // calculate Levenshtein distance
             var resultLev = new Levenshtein (args.title.toLowerCase(), result.simplifiedTitle);
             result.levDistance = resultLev.distance;
           }

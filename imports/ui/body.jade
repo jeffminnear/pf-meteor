@@ -6,8 +6,8 @@ body
     div.row(class="form card-panel blue lighten-5")
       div.search(class="col s12 m8 l4")
         i(class="material-icons") search
-        form.search
-          input(class="search-field" type="text" name="text" placeholder="Enter a title to search for prices")
+        form(id="search-form" class="search")
+          input(id="search-field" type="text" name="text" placeholder="Enter a title to search for prices")
       div(class="filters col s6 m4 l4 offset-s3")
         div.switch(class="sale-switch")
           label
