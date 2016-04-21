@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "levenshtein": "^1.0.5",
-    "lodash": "^4.8.2",
+    "lodash": "^4.11.1",
     "meteor-node-stubs": "~0.2.0",
     "pf-scrapers": "^1.0.1"
   }
