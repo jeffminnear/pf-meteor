@@ -1,9 +1,9 @@
 template(name="result")
   div.row(class="result {{#if normalPrice}}sale{{/if}}")
     div.row(class="game-link-container")
-      a.game-link(href="#" onclick="window.open('#{ linkURL }', '_system')" class="col s4 m4 l2 push-s8 push-m8 offset-l10")
+      a.game-link(href="#" onclick="window.open('#{ linkURL }', '_system')" class="col s4 m2 l2 push-s8 push-m9 offset-l10")
         span Check it out!
-        i(class="icon ion-ios-navigate")
+        i(class="material-icons") navigation
     div.row
       p.result-title(class="col s8 m3 l3 offset-s2")
         | #{ simplifiedTitle }
