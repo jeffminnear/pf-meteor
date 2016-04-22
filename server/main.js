@@ -21,7 +21,6 @@ Meteor.methods({
       return;
     }
 
-    console.log("##################################################\n" + args.title + "\n##################################################");
 
     var promises = scrapers;
 
