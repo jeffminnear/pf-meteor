@@ -27,37 +27,26 @@
 .search-results {
   .result {
     padding: 1rem 1rem 0 1rem;
-    .game-link-container {
-      width: 98%;
-      margin: 0 auto;
-      a {
-        width: 30%;
-        text-decoration: none;
-        color: #3C6BFA;
-        i {
-          font-size: 3rem;
-          transform: rotate(45deg);
-          webkit-transfrom: rotate(45deg);
-          moz-transform: rotate(45deg);
-          ms-transform: rotate(45deg);
-        }
-        span {
-          font-size: 0.8rem;
-        }
-      }
+
+    a {
+      text-decoration: none;
+      color: rgba(0,0,0,0.75);
     }
   }
+
   p {
     font-size: 1.3rem;
 
-      @media only screen and (max-width: 600px) { font-size: 1.7rem; }
+    @media only screen and (max-width: 600px) { font-size: 1.7rem; }
 
     text-align: center;
+
     &.result-normal-price {
       text-decoration: line-through;
       color: silver;
       font-size: 1.2rem;
     }
+
     &.result-sale-price {
       font-weight: bold;
       color: #0CD20C;
